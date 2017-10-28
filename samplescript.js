@@ -44,6 +44,7 @@ recognition.onresult = function(event) {
   var color = event.results[last][0].transcript;
 
   diagnostic.textContent = 'Result received: ' + color + '.';
+  console.log(color);
   bg.style.backgroundColor = color;
   console.log('Confidence: ' + event.results[0][0].confidence);
 }
