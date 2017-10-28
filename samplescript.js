@@ -25,11 +25,10 @@ colors.forEach(function(v, i, a){
 });
 hints.innerHTML = 'Tap/click then say a color to change the background color of the app. Try '+ colorHTML + '.';
 
-recognition.start();
-// document.body.onclick = function() {
-//   recognition.start();
-//   console.log('Ready to receive a color command.');
-// }
+document.body.onclick = function() {
+  recognition.start();
+  console.log('Ready to receive a color command.');
+}
 
 recognition.onresult = function(event) {
   // The SpeechRecognitionEvent results property returns a SpeechRecognitionResultList object
@@ -49,9 +48,9 @@ recognition.onresult = function(event) {
   console.log('Confidence: ' + event.results[0][0].confidence);
 }
 
-// recognition.onspeechend = function() {
-//   recognition.stop();
-// }
+recognition.onspeechend = function() {
+  recognition.stop();
+}
 
 recognition.onnomatch = function(event) {
   diagnostic.textContent = "I didn't recognise that color.";
