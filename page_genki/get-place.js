@@ -12,22 +12,26 @@ var diagnostic = document.querySelector('.output');
 var bg = document.querySelector('html');
 var hints = document.querySelector('.hints');
 
-// var colorHTML= '';
-// colors.forEach(function(v, i, a){
-//   console.log(v, i);
-//   colorHTML += '<span style="background-color:' + v + ';"> ' + v + ' </span>';
-// });
-//hints.innerHTML = 'Tap/click then say a color to change the background color of the app. Try '+ colorHTML + '.';
-//hints.innerHTML = 'Click to listen...';
+/* global AFRAME */
 
-// document.body.onclick = function() {
-//   recognition.start();
-//   console.log('Listening...');
-// }
+AFRAME.registerComponent('get-place', {
+  schema: {
+    on: {type: 'string'},
+    target: {type: 'selector'},
+    src: {type: 'string'},
+    dur: {type: 'number', default: 300}
+  },
 
+  init: function () {
+    var data = this.data;
+    var el = this.el;
+    el.addEventListener(data.on, function () {
+      recognition.start();
+      console.log('starting sound recognition')
+    });
+  },
 
-document.querySelector('#refresh-button').addEventListener('click', function() {
-        recognition.start();
+});
 
 recognition.onresult = function(event) {
   // The SpeechRecognitionEvent results property returns a SpeechRecognitionResultList object
@@ -72,17 +76,3 @@ recognition.onresult = function(event) {
 recognition.onspeechend = function() {
   recognition.stop();
 }
-    });
-
-
-// recognition.onspeechend = function() {
-//   recognition.stop();
-// }
-
-// recognition.onnomatch = function(event) {
-//   //diagnostic.textContent = "I didn't recognise that color.";
-// }
-
-// recognition.onerror = function(event) {
-//   //diagnostic.textContent = 'Error occurred in recognition: ' + event.error;
-// }

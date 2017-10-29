@@ -10,7 +10,7 @@
     <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
     <script src="components/set-image.js"></script>
-    <script src="components/sound.js"></script>
+    <script src="components/get-place.js"></script>
   </head>
   <body>
     <a-scene>
@@ -24,7 +24,7 @@
         <img id="cubes" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/cubes.jpg">
         <img id="sechelt" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
         -->
-
+        <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
         <img id="city" crossorigin="anonymous" src="https://roadtovrlive-5ea0.kxcdn.com/wp-content/uploads/2014/09/Venice.Still001.jpeg">
         <img id="city-thumb" crossorigin="anonymous" src="https://i.imgur.com/lZv9hZc.jpg">
 
@@ -64,8 +64,32 @@
           event-set__2="_event: mouseleave; color: black"
           fuse="true"
           raycaster="objects: .link"></a-cursor>
-          <a-text-
       </a-entity>
+
+      <script id="listen" type="text/html">
+          <a-entity class="listen"
+            geometry="primitive: plane; height: 1; width: 1"
+            material="shader: flat; src: ${thumb}"
+            event-set__1="_event: mousedown; scale: 1 1 1"
+            event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+            event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+            event-set__4="_event: mouseleave; scale: 1 1 1"
+            get-place="on: click; target: #image-360; src: ${src}"
+            sound="on: click; src: #click-sound"></a-entity>
+        </script>
+      <!-- "button" -->
+      <!--
+      <a-entity id="refresh-button" geometry="primitive: box" material="color: red" position="-2 0 -2"></a-entity>
+      -->
+      <a-entity id="listeners" layout="type: line; margin: 1.5" position="-2 -1 -4">
+        <a-entity template="src: #listen" data-src="#city" data-thumb="#city-thumb"></a-entity>
+        <!--
+        <a-entity template="src: #link" data-src="#sechelt" data-thumb="#sechelt-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#cubes" data-thumb="#cubes-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#sechelt" data-thumb="#sechelt-thumb"></a-entity>
+        -->
+      </a-entity>
+
     </a-scene>
   </body>
 </html>
