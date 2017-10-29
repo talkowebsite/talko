@@ -29,7 +29,7 @@ AFRAME.registerComponent('get-place', {
 
 });
 
-var keyword;
+global keyword;
 
 recognition.onresult = function(event) {
   console.log('got a word!');
