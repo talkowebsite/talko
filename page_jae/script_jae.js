@@ -17,7 +17,6 @@ var diagnostic = document.querySelector('.output');
 
 document.body.onclick = function() {
   recognition.start();
-  console.log('What do you want to calculate?');
 }
 
 recognition.onresult = function(event) {
@@ -35,6 +34,11 @@ recognition.onresult = function(event) {
 
 
   diagnostic.textContent = 'Answer: ' + line + '.';
+
+  if(line.indexOf("+") == -1 && line.indexOf("-") == -1 && line.indexOf("*") == -1 && line.indexOf("/") == -1) {
+    diagnostic.textContent = 'No operators';
+  }
+
   console.log(line.indexOf("+"));
   console.log(line);
   console.log('Confidence: ' + event.results[0][0].confidence);
