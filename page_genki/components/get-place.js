@@ -81,7 +81,7 @@ recognition.onresult = function(event) {
             // Request parameters
             "q": keyword
         };
-
+        $.ajaxSetup({async:false});
         $.ajax({
             url: "https://api.cognitive.microsoft.com/bing/v7.0/images/search?" + $.param(params),
             beforeSend: function(xhrObj){
