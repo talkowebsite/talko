@@ -102,6 +102,7 @@ recognition.onresult = function(event) {
 */
 function waitForElement(){
     if(typeof someVariable !== "undefined"){
+      console.log('found keyword');
         var params = {
             // Request parameters
             "q": keyword
