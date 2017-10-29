@@ -20,10 +20,8 @@ taco.onclick = function() {
   console.log("HI");
 }
 
-var geocoder;
-
 function initMap() {
-  geocoder = new google.maps.Geocoder();
+  var geocoder = new google.maps.Geocoder();
   var austin = {lat: 30.2672, lng: -97.7431};
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 11,
