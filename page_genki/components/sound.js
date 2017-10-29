@@ -40,7 +40,7 @@ recognition.onresult = function(event) {
   var last = event.results.length - 1;
   var word = event.results[last][0].transcript;
 
-  diagnostic.textContent = 'Result received: ' + word + '.';
+  //diagnostic.textContent = 'Result received: ' + word + '.';
   //bg.style.backgroundColor = color;
   //console.log('Confidence: ' + event.results[0][0].confidence);
   console.log(word);
