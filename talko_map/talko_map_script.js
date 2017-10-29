@@ -31,6 +31,7 @@ function geocodeAddress(geocoder, resultsMap, address) {
             var marker = new google.maps.Marker({
               map: resultsMap,
               position: results[0].geometry.location
+              zoom: 8:
             });
           } else {
             alert('Geocode was not successful for the following reason: ' + status);
@@ -55,7 +56,7 @@ recognition.onresult = function(event) {
   geocoder = new google.maps.Geocoder();
   var austin = {lat: 30.2672, lng: -97.7431};
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 11,
+    zoom: 10,
     center: austin
   });
 
