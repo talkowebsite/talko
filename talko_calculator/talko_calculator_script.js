@@ -16,8 +16,8 @@ recognition.maxAlternatives = 1;
 var diagnostic = document.querySelector('.output');
 
 taco.onclick = function() {
-    console.log("HI");
   recognition.start();
+  console.log("HI");
 }
 
 function isNumeric(n) {
@@ -111,57 +111,6 @@ recognition.onresult = function(event) {
   console.log('ANSWER: ' + resultStack);
 
   diagnostic.textContent = 'ANSWER: ' + resultStack;
-
-  // var newStack = [];
-
-  // for(int i = 0; i < postfixArray.length; i++) {
-  //   var next = postfixArray[i];
-  //   if(next == )
-  // }
-
-  // console.log(last);
-  // diagnostic.textContent = 'Answer: ' + line + '.';
-
-  // if(line.indexOf("+") == -1 && line.indexOf("-") == -1 && line.indexOf("*") == -1 && line.indexOf("x") == -1 && line.indexOf("/") == -1) {
-  //   diagnostic.textContent = 'No operators';
-  // }
-
-  // var arraySize = array.length;
-
-  // var index1 = array.indexOf("x");
-  // var index2 = array.indexOf("/");
-  // if(index1 > index2) {
-  //   var mdIndex = index2;
-  // } else {
-  //   var mdIndex = index1;
-  // }
-
-  // var firstNum = array[mdIndex-1];
-  // stack.push(firstNum);
-
-  // while(mdIndex < arraySize - 2) {
-  //   var first = stack.pop();
-  //   var op = array[mdIndex];
-  //   var second = array[mdIndex+1];
-
-  //   if(op == '+' || op == 'plus') {
-  //     stack.push(parseInt(first, 10) + parseInt(second, 10));
-  //   } else if(op == '-' || op == 'minus') {
-  //     stack.push(parseInt(first, 10) - parseInt(second, 10));
-  //   } else if(op == 'x' || op == '*' || op == 'times') {
-  //     stack.push(parseInt(first, 10) * parseInt(second, 10));
-  //   } else if(op == '/' || op == 'over') {
-  //     stack.push(parseInt(first, 10) / parseInt(second, 10));
-  //   }
-  //   mdIndex = mdIndex + 2;
-  // }
-
-  // var index = 0;
-  // var firstAS = array[index];
-  // var opAS = array[index+1];
-  // var secondAS = array[index+2];
-
-
 }
 
 recognition.onspeechend = function() {
