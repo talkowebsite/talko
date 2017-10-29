@@ -77,7 +77,33 @@ recognition.onresult = function(event) {
   //   }
   
  // $(function() {
-        var params = {
+        
+    //});
+/*
+  //$(function(){
+
+        getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
+        {
+            tags: keyword,
+            tagmode: "any",
+            format: "json"
+        },
+        function(data) {
+            var rnd = Math.floor(Math.random() * data.items.length);
+
+            var image_src = data.items[rnd]['media']['m'].replace("_m", "_b");
+            pic.src = image_src;
+            console.log(image_src);
+        });
+
+    }
+
+}
+*/
+recognition.onspeechend = function() {
+  recognition.stop();
+
+  var params = {
             // Request parameters
             "q": keyword
         };
@@ -107,29 +133,6 @@ recognition.onresult = function(event) {
             //alert("error");
         });
       }
-    //});
-/*
-  //$(function(){
-
-        getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
-        {
-            tags: keyword,
-            tagmode: "any",
-            format: "json"
-        },
-        function(data) {
-            var rnd = Math.floor(Math.random() * data.items.length);
-
-            var image_src = data.items[rnd]['media']['m'].replace("_m", "_b");
-            pic.src = image_src;
-            console.log(image_src);
-        });
-
-    }
-
-}
-*/
-recognition.onspeechend = function() {
-  recognition.stop();
+      
   console.log('ended sound recognition');
 }
