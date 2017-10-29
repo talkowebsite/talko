@@ -32,11 +32,31 @@ recognition.onresult = function(event) {
   var last = event.results.length - 1;
   var line = event.results[last][0].transcript;
 
-
+  console.log(last);
   diagnostic.textContent = 'Answer: ' + line + '.';
 
   if(line.indexOf("+") == -1 && line.indexOf("-") == -1 && line.indexOf("*") == -1 && line.indexOf("/") == -1) {
     diagnostic.textContent = 'No operators';
+  }
+
+  var array = line.split(" ");
+
+  var i = 0;
+
+  while(array) {
+    var first = array[i];
+    var op = array[i+1];
+    var second = array[i+2];
+  }
+
+  if(op == '+') {
+      diagnostic.textContent = 'Answer: ' + (first + second) + '.';
+  } else if(op == '-') {
+      diagnostic.textContent = 'Answer: ' + (first - second) + '.';
+  } else if(op == '*') {
+      diagnostic.textContent = 'Answer: ' + (first * second) + '.';
+  } else if(op == '/') {
+      diagnostic.textContent = 'Answer: ' + (first / second) + '.';
   }
 
   console.log(line.indexOf("+"));
