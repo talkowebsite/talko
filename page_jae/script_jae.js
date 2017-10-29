@@ -108,6 +108,8 @@ recognition.onresult = function(event) {
 
   console.log('ANSWER: ' + resultStack);
 
+  diagnostic.textContent = 'ANSWER: ' + resultStack;
+
   // var newStack = [];
 
   // for(int i = 0; i < postfixArray.length; i++) {
