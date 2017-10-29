@@ -64,7 +64,7 @@ recognition.onresult = function(event) {
           topStackPriority = 1;
         }
       }
-      while((stack.length > 0) && (topStackPriority > currentPriority)) {
+      while((stack.length > 0) && (topStackPriority >= currentPriority)) {
         queue.push(stack.pop());
       }
       stack.push(current);
@@ -84,21 +84,22 @@ recognition.onresult = function(event) {
     switch(token) {
       case '+':
       case 'plus':
-        resultStack.push(resultStack.pop() + resultStack.pop());
+        resultStack.push(parseInt(resultStack.pop() + resultStack.pop(), 10));
         break;
       case '-':
       case 'minus':
-        resultStack.push(resultStack.pop() - resultStack.pop());
+        var sub = resultStack.pop();
+        resultStack.push(parseInt(resultStack.pop() - resultStack.pop(), 10));
         break;
       case 'x':
       case '*':
       case 'times':
-        resultStack.push(resultStack.pop() * resultStack.pop());
+        resultStack.push(parseInt(resultStack.pop() * resultStack.pop(), 10));
         break;
       case '/':
       case 'over':
         var divisor = resultStack.pop();
-        resultStack.push(resultStack.pop() / divisor);
+        resultStack.push(parseInt(resultStack.pop() / divisor, 10));
         break;
       default:
         resultStack.push(token);
