@@ -84,25 +84,25 @@ recognition.onresult = function(event) {
     switch(token) {
       case '+':
       case 'plus':
-        resultStack.push(parseInt(resultStack.pop() + resultStack.pop(), 10));
+        resultStack.push(resultStack.pop() + resultStack.pop());
         break;
       case '-':
       case 'minus':
         var sub = resultStack.pop();
-        resultStack.push(parseInt(resultStack.pop() - resultStack.pop(), 10));
+        resultStack.push(resultStack.pop() - sub);
         break;
       case 'x':
       case '*':
       case 'times':
-        resultStack.push(parseInt(resultStack.pop() * resultStack.pop(), 10));
+        resultStack.push(resultStack.pop() * resultStack.pop());
         break;
       case '/':
       case 'over':
         var divisor = resultStack.pop();
-        resultStack.push(parseInt(resultStack.pop() / divisor, 10));
+        resultStack.push(resultStack.pop() / divisor);
         break;
       default:
-        resultStack.push(token);
+        resultStack.push(parseInt(token));
         break;
     }
   }
