@@ -48,6 +48,12 @@ recognition.onresult = function(event) {
       postfixBuffer = "";
 
       if(stack.length <= 0) {
+        stack.push(something);
+      } else {
+        var somethingTop = stack.peek();
+      }
+
+      if(something == 'x' || something == '*' || something == 'times' || something == '/' || something == 'over' || something == 'divided') {
         priority = 1;
       } else {
         priority = 0;
