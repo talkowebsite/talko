@@ -77,36 +77,11 @@ recognition.onresult = function(event) {
   //   }
   
  // $(function() {
-        
-    //});
-/*
-  //$(function(){
-
-        getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
-        {
-            tags: keyword,
-            tagmode: "any",
-            format: "json"
-        },
-        function(data) {
-            var rnd = Math.floor(Math.random() * data.items.length);
-
-            var image_src = data.items[rnd]['media']['m'].replace("_m", "_b");
-            pic.src = image_src;
-            console.log(image_src);
-        });
-
-    }
-
-}
-*/
-function waitForElement(){
-    if(typeof someVariable !== "undefined"){
-      console.log('found keyword');
         var params = {
             // Request parameters
             "q": keyword
         };
+
         $.ajax({
             url: "https://api.cognitive.microsoft.com/bing/v7.0/images/search?" + $.param(params),
             beforeSend: function(xhrObj){
@@ -131,14 +106,29 @@ function waitForElement(){
         .fail(function() {
             //alert("error");
         });
-    }
-    else{
-        setTimeout(waitForElement, 250);
-    }
-}
+    //});
+/*
+  //$(function(){
 
+        getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
+        {
+            tags: keyword,
+            tagmode: "any",
+            format: "json"
+        },
+        function(data) {
+            var rnd = Math.floor(Math.random() * data.items.length);
+
+            var image_src = data.items[rnd]['media']['m'].replace("_m", "_b");
+            pic.src = image_src;
+            console.log(image_src);
+        });
+
+    }
+
+}
+*/
 recognition.onspeechend = function() {
   recognition.stop();
   console.log('ended sound recognition');
-  waitForElement();
 }
