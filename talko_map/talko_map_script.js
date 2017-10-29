@@ -15,17 +15,12 @@ recognition.maxAlternatives = 1;
 
 var diagnostic = document.querySelector('.output');
 
+var geocoder;
+var map;
+
 taco.onclick = function() {
   recognition.start();
   console.log("HI");
-}
-
-function initMap() {
-  var austin = {lat: 30.2672, lng: -97.7431};
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 11,
-    center: austin
-  });
 }
 
 function geocodeAddress(geocoder, resultsMap, address) {
@@ -57,7 +52,12 @@ recognition.onresult = function(event) {
   var address = event.results[last][0].transcript;
   console.log('What you said: ' + address);
 
-  var geocoder = new google.maps.Geocoder();
+  geocoder = new google.maps.Geocoder();
+  var austin = {lat: 30.2672, lng: -97.7431};
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 11,
+    center: austin
+  });
 
   geocodeAddress(geocoder, map, address);
 }
