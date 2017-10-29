@@ -51,7 +51,7 @@ recognition.onresult = function(event) {
   //}
 
   if(op == '+') {
-      diagnostic.textContent = 'Answer: ' + (first + second) + '.';
+      diagnostic.textContent = 'Answer: ' + (parseInt(first) + parseInt(second)) + '.';
   } else if(op == '-') {
       diagnostic.textContent = 'Answer: ' + (first - second) + '.';
   } else if(op == '*') {
