@@ -15,7 +15,8 @@ recognition.maxAlternatives = 1;
 
 var diagnostic = document.querySelector('.output');
 
-document.body.onclick = function() {
+document.body.img.onclick = function() {
+    console.log("HI");
   recognition.start();
 }
 
