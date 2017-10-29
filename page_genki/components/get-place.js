@@ -112,3 +112,4 @@ recognition.onspeechend = function() {
   recognition.stop();
   console.log('ended sound recognition');
 }
+}
