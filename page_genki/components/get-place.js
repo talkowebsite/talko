@@ -31,7 +31,7 @@ AFRAME.registerComponent('get-place', {
     });
   },
 
-});
+
 
 recognition.onresult = function(event) {
   // The SpeechRecognitionEvent results property returns a SpeechRecognitionResultList object
@@ -112,3 +112,5 @@ recognition.onspeechend = function() {
   recognition.stop();
   console.log('ended sound recognition');
 }
+
+});
