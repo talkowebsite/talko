@@ -31,14 +31,11 @@ recognition.onresult = function(event) {
   // We then return the transcript property of the SpeechRecognitionAlternative object
 
   var last = event.results.length - 1;
-  console.log(last);
   var line = event.results[last][0].transcript;
 
 
   diagnostic.textContent = 'Answer: ' + line + '.';
-    console.log(line.indexOf("+"));
-  console.log(line.join(" * "));
-
+  console.log(line.indexOf("+"));
   console.log(line);
   console.log('Confidence: ' + event.results[0][0].confidence);
 }
@@ -48,7 +45,7 @@ recognition.onspeechend = function() {
 }
 
 recognition.onnomatch = function(event) {
-  diagnostic.textContent = "I didn't recognise that color.";
+  diagnostic.textContent = "I didn't recognize that line.";
 }
 
 recognition.onerror = function(event) {
