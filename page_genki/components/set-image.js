@@ -24,6 +24,7 @@ AFRAME.registerComponent('set-image', {
       // Wait for fade to complete.
       setTimeout(function () {
         // Set image.
+        console.log(document.getElementById('city').src);
         data.target.setAttribute('material', 'src', data.src);
       }, data.dur);
     });
