@@ -60,7 +60,7 @@ recognition.onresult = function(event) {
       console.log('queue: ' + queue);
 
       if(stack.length > 0) {
-        var topStack = stack.peek();
+        var topStack = stack[stack.length-1];
         if(topStack == '+' || topStack == 'plus' || topStack == '-' || topStack == 'minus') {
           topStackPriority = 0;
         } else {
