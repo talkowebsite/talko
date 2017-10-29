@@ -42,7 +42,7 @@ recognition.onresult = function(event) {
 
   var makeKeyword = function(){
     return keyword;
-  }
+  };
 //   getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
 //         {
 //             tags: keyword,
