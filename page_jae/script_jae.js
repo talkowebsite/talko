@@ -40,6 +40,7 @@ recognition.onresult = function(event) {
   console.log('Input array: ' + inputArray);
 
   var currentPriority = 1;
+  var topStackPriority = 1;
   var queue = [];
   var stack = [];
 
@@ -57,7 +58,16 @@ recognition.onresult = function(event) {
       }
       console.log('stack: ' + stack);
       console.log('queue: ' + queue);
-      while((stack.length > 0) && ((stack.peek() == 'x' || stack.peek() == '*' || stack.peek() == 'times' || stack.peek() == '/' || stack.peek() == 'over') || ((stack.peek() == '+' || stack.peek() == 'plus' || stack.peek() == '-' || stack.peek() == 'minus') && !currentPriority))) {
+
+      if(stack.length > 0) {
+        var topStack = stack.peek();
+        if(topStack == '+' || topStack == 'plus' || topStack == '-' || topStack == 'minus') {
+          topStackPriority = 0;
+        } else {
+          topStackPriority = 1;
+        }
+      }
+      while((stack.length > 0) && (topStackPriority >= currentPriority)) {
         queue.push(stack.pop());
       }
       stack.push(current);
