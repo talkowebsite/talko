@@ -87,25 +87,28 @@
 
 			<!-- Scripts -->
 			<!--[if lte IE 8]><script src="assets/js/respond.min.js"></script><![endif]-->
-			<script src="talko_calculator_script.js"></script>
-			<script>
-				if ('addEventListener' in window) {
-					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
-					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
-				}
-			</script>
+			<script src="talko_map_script.js"></script>
 
 			<script>
+				
 				function initMap() {
-					var uluru = {lat: 30.2672, lng: -97.7431};
+					var austin = {lat: 30.2672, lng: -97.7431};
 					var map = new google.maps.Map(document.getElementById('map'), {
 						zoom: 11,
-						center: uluru
+						center: austin
 					});
 				}
+
 			</script>
+
 			<script async defer
 			src="https://maps.googleapis.com/maps/api/js?key= AIzaSyCboDPOeVDhIdi82jT9-y7zGKTt2AKRKt4&callback=initMap">
+		</script>
+		<script>
+			if ('addEventListener' in window) {
+				window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
+				document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+			}
 		</script>
 
 	</body>
