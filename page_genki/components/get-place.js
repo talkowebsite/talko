@@ -52,7 +52,7 @@ recognition.onresult = function(event) {
 //             pic.src = image_src;
 //             console.log(image_src);
 //         });
-// }
+}
   google.load('search', '1');
   google.setOnLoadCallback(OnLoad);
   var search;
