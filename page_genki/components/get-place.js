@@ -67,7 +67,7 @@ recognition.onresult = function(event) {
             var image_src = data.items[rnd]['media']['m'].replace("_m", "_b");
             pic.src = image_src;
             console.log(image_src);
-        }
+        });
 
   // google.load('search', '1');
   // google.setOnLoadCallback(OnLoad);
