@@ -2,6 +2,8 @@ var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
 
+var grammar = '#JSGF V1.0; grammar numbers; public <number> = one | two | three | four | five ;';
+
 var recognition = new SpeechRecognition();
 var speechRecognitionList = new SpeechGrammarList();
 speechRecognitionList.addFromString(grammar, 1);
@@ -10,6 +12,8 @@ recognition.grammars = speechRecognitionList;
 recognition.lang = 'en-US';
 recognition.interimResults = false;
 recognition.maxAlternatives = 1;
+
+var diagnostic = document.querySelector('.output');
 
 document.body.onclick = function() {
   recognition.start();
@@ -29,6 +33,9 @@ recognition.onresult = function(event) {
   var last = event.results.length - 1;
   console.log(last);
   var line = event.results[last][0].transcript;
+
+  diagnostic.textContent = 'Result received: ' + line + '.';
+
   console.log(line);
   console.log('Confidence: ' + event.results[0][0].confidence);
 }
@@ -38,9 +45,9 @@ recognition.onspeechend = function() {
 }
 
 recognition.onnomatch = function(event) {
-  console.log("I didn't recognise that color.");
+  diagnostic.textContent = "I didn't recognise that color.";
 }
 
 recognition.onerror = function(event) {
-  console.log('Error occurred in recognition: ' + event.error);
+  diagnostic.textContent = 'Error occurred in recognition: ' + event.error;
 }
