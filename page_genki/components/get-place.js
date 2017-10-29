@@ -53,6 +53,7 @@ recognition.onresult = function(event) {
 //             console.log(image_src);
 //         });
 }
+  var pic = document.getElementById('city');
   google.load('search', '1');
   google.setOnLoadCallback(OnLoad);
   var search;
@@ -68,7 +69,8 @@ recognition.onresult = function(event) {
         if (search.results && search.results.length > 0)
         {
             var rnd = Math.floor(Math.random() * search.results.length);
-            console.log(search.results[rnd]['url']);
+            pic.src = search.results[rnd]['url'];
+            //console.log(search.results[rnd]['url']);
         }
     }
 /*
@@ -93,6 +95,7 @@ recognition.onresult = function(event) {
 }
 */
 recognition.onspeechend = function() {
+  console.log(pic.src);
   recognition.stop();
   console.log('ended sound recognition');
 }
