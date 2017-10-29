@@ -75,4 +75,5 @@ recognition.onresult = function(event) {
 }
 recognition.onspeechend = function() {
   recognition.stop();
+  console.log('ended sound recognition');
 }
