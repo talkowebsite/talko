@@ -66,6 +66,7 @@ recognition.onresult = function(event) {
       }
       while((stack.length > 0) && ((topStackPriority > currentPriority) || (topStackPriority == 1 && currentPriority == 1))) {
         queue.push(stack.pop());
+        topStack = stack[stack.length-1];
         if(topStack == '+' || topStack == 'plus' || topStack == '-' || topStack == 'minus') {
           topStackPriority = 0;
         } else {
@@ -93,7 +94,8 @@ recognition.onresult = function(event) {
         break;
       case '-':
       case 'minus':
-        resultStack.push(resultStack.pop() - resultStack.pop());
+        var sub = resultStack.pop();
+        resultStack.push(resultStack.pop() - sub);
         break;
       case 'x':
       case '*':
