@@ -43,11 +43,12 @@ recognition.onresult = function(event) {
 
   var i = 0;
 
-  while(array) {
+  //while(array) {
     var first = array[i];
     var op = array[i+1];
     var second = array[i+2];
-  }
+  //  i++;
+  //}
 
   if(op == '+') {
       diagnostic.textContent = 'Answer: ' + (first + second) + '.';
