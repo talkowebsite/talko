@@ -31,56 +31,17 @@ recognition.onresult = function(event) {
 
   var last = event.results.length - 1;
   var line = event.results[last][0].transcript;
+  console.log('What you said: ' + line);
   var inputArray = line.split(" ");
+  console.log('Input array: ' + inputArray);
 
-  // Infix to postfix
-  var priority = 0;
-  var postfixBuffer = "";
+  var queue = [];
   var stack = [];
-  var postfixArray = [];
 
   for(var i = 0; i < inputArray.length; i++) {
-    var something = inputArray[i];
-    if(something == '+' || something == 'plus' || something == '-' || something == 'minus' || something == 'x' || something == '*' || something == 'times' || something == '/' || something == 'over' || something == 'divided') {
-      if(postfixBuffer.length > 0) {
-        postfixArray.push(postfixBuffer);
-      }
-      postfixBuffer = "";
-
-      if(stack.length <= 0) {
-        stack.push(something);
-      } else {
-        var somethingTop = stack.peek();
-      }
-
-      if(something == 'x' || something == '*' || something == 'times' || something == '/' || something == 'over' || something == 'divided') {
-        priority = 1;
-      } else {
-        priority = 0;
-      }
-
-      if(priority == 1) {
-        postfixArray.push(valueOf(stack.pop()));
-        i--;
-      } else {
-        if(something == '+' || something == 'plus' || something == '-' || something == 'minus') {
-          postfixArray.push(valueOf(stack.pop()));
-          stack.push(something);
-        } else {
-          stack.push(something);
-        }
-      }
-    } else {
-      postfixBuffer += something;
-    }
+    var current = inputArray[i];
+    console.log('current: ' + current);
   }
-  postfixArray.push(postfixBuffer);
-  var len = stack.length;
-  for(var j = 0; j < len; j++) {
-    postfixArray.push(valueOf(stack.pop()));
-  }
-
-  console.log(postfixArray);
 
   // var newStack = [];
 
