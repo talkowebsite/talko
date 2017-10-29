@@ -30,6 +30,7 @@ AFRAME.registerComponent('get-place', {
 });
 
 recognition.onresult = function(event) {
+  console.log('got a word!');
   var last = event.results.length - 1;
   var word = event.results[last][0].transcript;
   console.log(word);
@@ -38,38 +39,38 @@ recognition.onresult = function(event) {
   var keyword = "antarctica,360degrees";
   console.log(keyword);
 
-  getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
+//   getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
+//         {
+//             tags: keyword,
+//             tagmode: "any",
+//             format: "json"
+//         },
+//         function(data) {
+//             var rnd = Math.floor(Math.random() * data.items.length);
+
+//             var image_src = data.items[rnd]['media']['m'].replace("_m", "_b");
+//             pic.src = image_src;
+//             console.log(image_src);
+//         });
+// }
+  google.load('search', '1');
+  google.setOnLoadCallback(OnLoad);
+  var search;
+
+  function OnLoad()
+    {
+        search = new google.search.ImageSearch();
+        search.setSearchCompleteCallback(this, searchComplete, null);
+        search.execute(keyword);
+    }
+    function searchComplete()
+    {
+        if (search.results && search.results.length > 0)
         {
-            tags: keyword,
-            tagmode: "any",
-            format: "json"
-        },
-        function(data) {
-            var rnd = Math.floor(Math.random() * data.items.length);
-
-            var image_src = data.items[rnd]['media']['m'].replace("_m", "_b");
-            pic.src = image_src;
-            console.log(image_src);
-        });
-}
-  // google.load('search', '1');
-  // google.setOnLoadCallback(OnLoad);
-  // var search;
-
-  // function OnLoad()
-  //   {
-  //       search = new google.search.ImageSearch();
-  //       search.setSearchCompleteCallback(this, searchComplete, null);
-  //       search.execute(keyword);
-  //   }
-  //   function searchComplete()
-  //   {
-  //       if (search.results && search.results.length > 0)
-  //       {
-  //           var rnd = Math.floor(Math.random() * search.results.length);
-  //           console.log(search.results[rnd]['url']);
-  //       }
-  //   }
+            var rnd = Math.floor(Math.random() * search.results.length);
+            console.log(search.results[rnd]['url']);
+        }
+    }
 /*
   //$(function(){
 
