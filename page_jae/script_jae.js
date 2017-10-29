@@ -52,16 +52,16 @@ recognition.onresult = function(event) {
 
   if(op == '+') {
     console.log('plus');
-      diagnostic.textContent = 'Answer: ' + (parseInt(first, 10) + parseInt(second, 10)) + '.';
+      diagnostic.textContent = 'Answer: ' + (parseInt(first, 10) + parseInt(second, 10));
   } else if(op == '-') {
         console.log('minus');
-      diagnostic.textContent = 'Answer: ' + (first - second) + '.';
+      diagnostic.textContent = 'Answer: ' + (parseInt(first, 10) - parseInt(second, 10));
   } else if(op == '*') {
         console.log('times');
-      diagnostic.textContent = 'Answer: ' + (first * second) + '.';
+      diagnostic.textContent = 'Answer: ' + (parseInt(first, 10) * parseInt(second, 10));
   } else if(op == '/') {
         console.log('divide');
-      diagnostic.textContent = 'Answer: ' + (first / second) + '.';
+      diagnostic.textContent = 'Answer: ' + (parseInt(first, 10) / parseInt(second, 10));
   }
 
   console.log(line.indexOf("+"));
