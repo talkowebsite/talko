@@ -64,8 +64,13 @@ recognition.onresult = function(event) {
           topStackPriority = 1;
         }
       }
-      while((stack.length > 0) && (topStackPriority > currentPriority || (topStackPriority == 1 && currentPriority == 1))) {
+      while((stack.length > 0) && ((topStackPriority > currentPriority) || (topStackPriority == 1 && currentPriority == 1))) {
         queue.push(stack.pop());
+        if(topStack == '+' || topStack == 'plus' || topStack == '-' || topStack == 'minus') {
+          topStackPriority = 0;
+        } else {
+          topStackPriority = 1;
+        }
       }
       stack.push(current);
     }
