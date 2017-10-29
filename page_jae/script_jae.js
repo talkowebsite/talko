@@ -39,7 +39,7 @@ recognition.onresult = function(event) {
   var stack = [];
   var postfixArray = [];
 
-  for(int i = 0; i < inputArray.length; i++) {
+  for(var i = 0; i < inputArray.length; i++) {
     var something = inputArray[i];
     if(something == '+' || something == 'plus' || something == '-' || something == 'minus' || something == 'x' || something == '*' || something == 'times' || something == '/' || something == 'over' || something == 'divided') {
       if(postfixBuffer.length > 0) {
@@ -70,7 +70,7 @@ recognition.onresult = function(event) {
   }
   postfixArray.push(postfixBuffer);
   var len = stack.length;
-  for(int j = 0; j < len; j++) {
+  for(var j = 0; j < len; j++) {
     postfixArray.push(valueOf(stack.pop()));
   }
 
