@@ -37,7 +37,7 @@ recognition.onresult = function(event) {
   var word = event.results[last][0].transcript;
   console.log(word);
   
-  keyword = word + ",360degrees";
+  keyword = word + " 360 image";
   //var keyword = "antarctica,360degrees";
   console.log(keyword);
 
@@ -79,7 +79,7 @@ recognition.onresult = function(event) {
   $(function() {
         var params = {
             // Request parameters
-            "q": "cats"
+            "q": "keyword"
         };
 
         $.ajax({
@@ -129,7 +129,6 @@ recognition.onresult = function(event) {
 }
 */
 recognition.onspeechend = function() {
-  console.log(pic.src);
   recognition.stop();
   console.log('ended sound recognition');
 }
