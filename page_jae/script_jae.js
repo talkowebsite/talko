@@ -48,7 +48,7 @@ recognition.onresult = function(event) {
     var current = inputArray[i];
     console.log('current: ' + current);
 
-    if(isNumeric(n)) {
+    if(isNumeric(current)) {
       queue.push(current);
     } else if(current == '+' || current == 'plus' || current == '-' || current == 'minus' || current == 'x' || current == '*' || current == 'times' || current == '/' || current == 'over') {
       if(current == '+' || current == 'plus' || current == '-' || current == 'minus') {
