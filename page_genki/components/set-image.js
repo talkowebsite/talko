@@ -4,7 +4,6 @@
  * Component that listens to an event, fades out an entity, swaps the texture, and fades it
  * back in.
  */
-global keyword;
 
 AFRAME.registerComponent('set-image', {
   schema: {
@@ -33,6 +32,7 @@ AFRAME.registerComponent('set-image', {
   },
 
   getImageURL: function(){
+    var keyword = document.getElementById('myVar').value;
     var params = {
             // Request parameters
             "q": keyword
