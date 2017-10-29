@@ -19,6 +19,10 @@ document.body.onclick = function() {
   recognition.start();
 }
 
+function isNumeric(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
 recognition.onresult = function(event) {
   // The SpeechRecognitionEvent results property returns a SpeechRecognitionResultList object
   // The SpeechRecognitionResultList object contains SpeechRecognitionResult objects.
@@ -35,13 +39,36 @@ recognition.onresult = function(event) {
   var inputArray = line.split(" ");
   console.log('Input array: ' + inputArray);
 
+  var currentPriority = 1;
   var queue = [];
   var stack = [];
 
   for(var i = 0; i < inputArray.length; i++) {
     var current = inputArray[i];
     console.log('current: ' + current);
+
+    if(isNumeric(n)) {
+      queue.push(current);
+    } else if(current == '+' || current == 'plus' || current == '-' || current == 'minus' || current == 'x' || current == '*' || current == 'times' || current == '/' || current == 'over') {
+      if(current == '+' || current == 'plus' || current == '-' || current == 'minus') {
+        currentPriority = 0;
+      } else {
+        currentPriority = 1;
+      }
+      console.log('stack: ' + stack);
+      console.log('queue: ' + queue);
+      while(stack.length > 0 && ((stack.peek() == 'x' || stack.peek() == '*' || stack.peek() == 'times' || stack.peek() == '/' || stack.peek() == 'over') || ((stack.peek() == '+' || stack.peek() == 'plus' ||
+        stack.peek() == '-' || stack.peek() == 'minus') && currentPriority == 0))) {
+        queue.push(stack.pop());
+      }
+      stack.push(current);
+    }
   }
+  while(stack.length > 0) {
+    queue.push(stack.pop());
+  }
+
+  console.log('final: ' + queue);
 
   // var newStack = [];
 
