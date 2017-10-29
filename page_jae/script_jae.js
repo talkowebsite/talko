@@ -64,7 +64,7 @@ recognition.onresult = function(event) {
           topStackPriority = 1;
         }
       }
-      while((stack.length > 0) && (topStackPriority > currentPriority)) {
+      while((stack.length > 0) && (topStackPriority > currentPriority || (topStackPriority == 1 && currentPriority == 1))) {
         queue.push(stack.pop());
       }
       stack.push(current);
