@@ -35,9 +35,10 @@ recognition.onresult = function(event) {
   var line = event.results[last][0].transcript;
 
 
-  diagnostic.textContent = 'Answer: ' + line.indexOf("+") + '.';
-  diagnostic.textContent = 'Answer: ' + line.join(" * ") + '.';
   diagnostic.textContent = 'Answer: ' + line + '.';
+    console.log(line.indexOf("+"));
+  console.log(line.join(" * "));
+
   console.log(line);
   console.log('Confidence: ' + event.results[0][0].confidence);
 }
