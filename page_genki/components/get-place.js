@@ -14,6 +14,8 @@ var hints = document.querySelector('.hints');
 
 /* global AFRAME */
 
+var keyword;
+
 AFRAME.registerComponent('get-place', {
   schema: {
     on: {type: 'string'},
@@ -38,11 +40,7 @@ recognition.onresult = function(event) {
   keyword = word + " 360 image";
   //var keyword = "antarctica,360degrees";
   console.log(keyword);
-  document.getElementById('myVar').value = makeKeyword();
 
-  var makeKeyword = function(){
-    return keyword;
-  };
 //   getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
 //         {
 //             tags: keyword,
@@ -79,35 +77,34 @@ recognition.onresult = function(event) {
   //   }
   
  // $(function() {
-        // var params = {
-        //     // Request parameters
-        //     "q": keyword
-        // };
-        // $.ajaxSetup({async:false});
-        // $.ajax({
-        //     url: "https://api.cognitive.microsoft.com/bing/v7.0/images/search?" + $.param(params),
-        //     beforeSend: function(xhrObj){
-        //         // Request headers
-        //         xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","feed4b52267b4552953ae546dd729bd4");
-        //     },
-        //     type: "GET",
-        //     // Request body
-        //     data: "",
-        // })
-        // .done(function(data) {
-        //     //alert("success");
-        //     console.log('success');
-        //     var rnd = Math.floor(Math.random() * (data.length/3)); 
+        var params = {
+            // Request parameters
+            "q": "italy 360 image"
+        };
+        $.ajax({
+            url: "https://api.cognitive.microsoft.com/bing/v7.0/images/search?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","feed4b52267b4552953ae546dd729bd4");
+            },
+            type: "GET",
+            // Request body
+            data: "",
+        })
+        .done(function(data) {
+            //alert("success");
+            console.log('success');
+            var rnd = Math.floor(Math.random() * (data.length/3)); 
 
-        //     //var image_src = data.d.results[0].Image[rnd].MediaUrl;
-        //     var result = JSON.stringify(data.value[0].contentUrl);
-        //     console.log(result);
-        //     var element = document.getElementById('city');
-        //     elementsrc = result;
-        // })
-        // .fail(function() {
-        //     //alert("error");
-        // });
+            //var image_src = data.d.results[0].Image[rnd].MediaUrl;
+            var result = JSON.stringify(data.value[0].contentUrl);
+            console.log(result);
+            var element = document.getElementById('city');
+            elementsrc = result;
+        })
+        .fail(function() {
+            //alert("error");
+        });
     //});
 /*
   //$(function(){
@@ -133,4 +130,33 @@ recognition.onresult = function(event) {
 recognition.onspeechend = function() {
   recognition.stop();
   console.log('ended sound recognition');
+
+  var params = {
+            // Request parameters
+            "q": keyword
+        };
+        $.ajax({
+            url: "https://api.cognitive.microsoft.com/bing/v7.0/images/search?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","feed4b52267b4552953ae546dd729bd4");
+            },
+            type: "GET",
+            // Request body
+            data: "",
+        })
+        .done(function(data) {
+            //alert("success");
+            console.log('success');
+            var rnd = Math.floor(Math.random() * (data.length/3)); 
+
+            //var image_src = data.d.results[0].Image[rnd].MediaUrl;
+            var result = JSON.stringify(data.value[0].contentUrl);
+            console.log(result);
+            var element = document.getElementById('city');
+            elementsrc = result;
+        })
+        .fail(function() {
+            //alert("error");
+        });
 }
