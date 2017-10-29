@@ -29,8 +29,8 @@ function initMap() {
   });
 }
 
-function geocodeAddress(geocoder, resultsMap, input) {
-        var address = input;
+function geocodeAddress(geocoder, resultsMap, address) {
+        var address = address;
         geocoder.geocode({'address': address}, function(results, status) {
           if (status === 'OK') {
             resultsMap.setCenter(results[0].geometry.location);
