@@ -51,7 +51,7 @@ recognition.onresult = function(event) {
   //}
 
   if(op == '+') {
-    console.log('plus');
+      console.log('plus');
       diagnostic.textContent = 'Answer: ' + (parseInt(first, 10) + parseInt(second, 10));
   } else if(op == '-') {
         console.log('minus');
