@@ -31,8 +31,6 @@ recognition.onresult = function(event) {
   var last = event.results.length - 1;
   console.log(last);
   var line = event.results[last][0].transcript;
-
-  diagnostic.textContent = 'Result received: ' + line + '.';
   console.log(line);
   console.log('Confidence: ' + event.results[0][0].confidence);
 }
