@@ -100,8 +100,8 @@ recognition.onresult = function(event) {
             //var image_src = data.d.results[0].Image[rnd].MediaUrl;
             var result = JSON.stringify(data.value[0].contentUrl);
             console.log(result);
-            var element = document.getElementById('city').src;
-            element.setAttribute('src', result);
+            var element = document.getElementById('city');
+            elementsrc = result;
         })
         .fail(function() {
             //alert("error");
