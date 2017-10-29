@@ -43,6 +43,7 @@ recognition.onresult = function(event) {
   var last = event.results.length - 1;
   var color = event.results[last][0].transcript;
 
+  console.log(color);
   diagnostic.textContent = 'Result received: ' + color + '.';
   console.log(color);
   bg.style.backgroundColor = color;
