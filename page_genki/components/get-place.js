@@ -55,26 +55,58 @@ recognition.onresult = function(event) {
 //             console.log(image_src);
 //         });
 }
-  var pic = document.getElementById('city');
-  google.load('search', '1');
-  google.setOnLoadCallback(OnLoad);
-  var search;
+  // var pic = document.getElementById('city');
+  // google.load('search', '1');
+  // google.setOnLoadCallback(OnLoad);
+  // var search;
 
-  function OnLoad()
-    {
-        search = new google.search.ImageSearch();
-        search.setSearchCompleteCallback(this, searchComplete, null);
-        search.execute(keyword);
-    }
-    function searchComplete()
-    {
-        if (search.results && search.results.length > 0)
-        {
-            var rnd = Math.floor(Math.random() * search.results.length);
-            pic.src = search.results[rnd]['url'];
-            //console.log(search.results[rnd]['url']);
-        }
-    }
+  // function OnLoad()
+  //   {
+  //       search = new google.search.ImageSearch();
+  //       search.setSearchCompleteCallback(this, searchComplete, null);
+  //       search.execute(keyword);
+  //   }
+  //   function searchComplete()
+  //   {
+  //       if (search.results && search.results.length > 0)
+  //       {
+  //           var rnd = Math.floor(Math.random() * search.results.length);
+  //           pic.src = search.results[rnd]['url'];
+  //           //console.log(search.results[rnd]['url']);
+  //       }
+  //   }
+  
+  $(function() {
+        var params = {
+            // Request parameters
+            "q": "cats"
+        };
+
+        $.ajax({
+            url: "https://api.cognitive.microsoft.com/bing/v7.0/images/search?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","feed4b52267b4552953ae546dd729bd4");
+            },
+            type: "GET",
+            // Request body
+            data: "",
+        })
+        .done(function(data) {
+            //alert("success");
+            console.log('success');
+            var rnd = Math.floor(Math.random() * (data.length/3)); 
+
+            //var image_src = data.d.results[0].Image[rnd].MediaUrl;
+            var result = JSON.stringify(data.value[0].contentUrl);
+            console.log(result);
+            var element = document.getElementById('city').src;
+            element.setAttribute('src', result);
+        })
+        .fail(function() {
+            //alert("error");
+        });
+    });
 /*
   //$(function(){
 
