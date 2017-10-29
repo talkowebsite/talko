@@ -79,7 +79,7 @@ recognition.onresult = function(event) {
   $(function() {
         var params = {
             // Request parameters
-            "q": "keyword"
+            "q": keyword
         };
 
         $.ajax({
