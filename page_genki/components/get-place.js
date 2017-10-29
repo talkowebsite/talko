@@ -76,7 +76,7 @@ recognition.onresult = function(event) {
   //       }
   //   }
   
-  $(function() {
+ // $(function() {
         var params = {
             // Request parameters
             "q": keyword
@@ -106,7 +106,7 @@ recognition.onresult = function(event) {
         .fail(function() {
             //alert("error");
         });
-    });
+    //});
 /*
   //$(function(){
 
