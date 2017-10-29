@@ -100,14 +100,12 @@ recognition.onresult = function(event) {
 
 }
 */
-recognition.onspeechend = function() {
-  recognition.stop();
-
-  var params = {
+function waitForElement(){
+    if(typeof someVariable !== "undefined"){
+        var params = {
             // Request parameters
             "q": keyword
         };
-        if(typeof keyword != 'undefined'){
         $.ajax({
             url: "https://api.cognitive.microsoft.com/bing/v7.0/images/search?" + $.param(params),
             beforeSend: function(xhrObj){
@@ -132,7 +130,14 @@ recognition.onspeechend = function() {
         .fail(function() {
             //alert("error");
         });
-      }
-      
+    }
+    else{
+        setTimeout(waitForElement, 250);
+    }
+}
+
+recognition.onspeechend = function() {
+  recognition.stop();
   console.log('ended sound recognition');
+  waitForElement();
 }
