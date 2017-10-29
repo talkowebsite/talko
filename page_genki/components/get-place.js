@@ -68,7 +68,7 @@ recognition.onresult = function(event) {
             pic.src = image_src;
             console.log(image_src);
         });
-
+}
   // google.load('search', '1');
   // google.setOnLoadCallback(OnLoad);
   // var search;
@@ -111,5 +111,4 @@ recognition.onresult = function(event) {
 recognition.onspeechend = function() {
   recognition.stop();
   console.log('ended sound recognition');
-}
 }
