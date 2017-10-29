@@ -58,7 +58,7 @@ recognition.onresult = function(event) {
       console.log('stack: ' + stack);
       console.log('queue: ' + queue);
       while(stack.length > 0 && ((stack.peek() == 'x' || stack.peek() == '*' || stack.peek() == 'times' || stack.peek() == '/' || stack.peek() == 'over') || ((stack.peek() == '+' || stack.peek() == 'plus' ||
-        stack.peek() == '-' || stack.peek() == 'minus') && currentPriority = 0))) {
+        stack.peek() == '-' || stack.peek() == 'minus') && currentPriority == 0))) {
         queue.push(stack.pop());
       }
       stack.push(current);
