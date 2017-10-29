@@ -50,16 +50,16 @@ recognition.onresult = function(event) {
   //  i++;
   //}
 
-  if(op == '+') {
+  if(op == '+' || op == 'plus') {
       console.log('plus');
       diagnostic.textContent = 'Answer: ' + (parseInt(first, 10) + parseInt(second, 10));
-  } else if(op == '-') {
+  } else if(op == '-' || op == 'minus') {
         console.log('minus');
       diagnostic.textContent = 'Answer: ' + (parseInt(first, 10) - parseInt(second, 10));
-  } else if(op == 'x') {
+  } else if(op == 'x' || op == '*' || op == 'times') {
         console.log('times');
       diagnostic.textContent = 'Answer: ' + (parseInt(first, 10) * parseInt(second, 10));
-  } else if(op == '/') {
+  } else if(op == '/' || op == 'over') {
         console.log('divide');
       diagnostic.textContent = 'Answer: ' + (parseInt(first, 10) / parseInt(second, 10));
   }
