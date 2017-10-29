@@ -4,6 +4,8 @@
  * Component that listens to an event, fades out an entity, swaps the texture, and fades it
  * back in.
  */
+global keyword;
+
 AFRAME.registerComponent('set-image', {
   schema: {
     on: {type: 'string'},
