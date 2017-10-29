@@ -35,8 +35,8 @@ recognition.onresult = function(event) {
   var word = event.results[last][0].transcript;
   console.log(word);
   
-  //var keyword = word + ",360degrees";
-  var keyword = "antarctica,360degrees";
+  var keyword = word + ",360degrees";
+  //var keyword = "antarctica,360degrees";
   console.log(keyword);
 
 //   getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
