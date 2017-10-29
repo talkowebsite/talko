@@ -1,37 +1,62 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Talko</title>
-		 <link rel="stylesheet" href="style.css">
-	</head>
-	
-	<body>
-		<h1>Talko</h1>
-		<p class="hints">hello world</p>
-		
-		<div>
-			<img src="taco.gif" height="50" width="50" />
-		<style>
-			.green-text {
-				color : green;
-			}
-		</style>
-		<h1 class="green-text">Talko</h1>
-		<p class="hints"></p>
-		<div>
-			<img src="taco.gif" style="height:50%;" style="width:50%;"/>
-		</div>
-		
-		<a href="page_jae/page_jae.html" class="btn btn-default">Talko Calculator</a>
-		<a href="page_genki/360.html" class="btn btn-default">Talko 360 warp(Beta lol)</a>
-		<div>
-        	<p class="output"><em>Click anywhere...</em></p>
-    	</div>
-		
-		<!--
-		<script src="script.js"></script>
-	-->
-		
-	</body>
-<script src="samplescript.js"></script>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Talko</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="black lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Talko</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="page_jae/page_jae.html">Talko Calculator</a></li>
+        <li><a href="page_genki/360.html">Talko 360 Warp</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center black-text">Talko</h1>
+      <div class="row center">
+        <img src="taco.gif"/>
+      </div>
+      <div class="row center">
+        <a href="https://github.com/talkowebsite/talko" id="download-button" class="btn-large waves-effect waves-light black">GitHub</a>
+      </div>
+      <br><br>
+
+    </div>
+  </div>
+
+  <footer class="white">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12"/> 
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container black-text">
+        Talko<a class="orange-text" href="https://github.com/talkowebsite/talko">.tech</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
 </html>
