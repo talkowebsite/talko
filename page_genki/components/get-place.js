@@ -27,7 +27,7 @@ AFRAME.registerComponent('get-place', {
     var el = this.el;
     el.addEventListener(data.on, function () {
       recognition.start();
-      console.log('starting sound recognition')
+      console.log('starting sound recognition');
     });
   },
 
