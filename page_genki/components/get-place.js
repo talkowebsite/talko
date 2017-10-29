@@ -40,7 +40,7 @@ recognition.onresult = function(event) {
   console.log(keyword);
   document.getElementById('myVar').value = makeKeyword();
 
-  var makeKeyword = function(){
+    makeKeyword = function(){
     return keyword;
   }
 //   getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
