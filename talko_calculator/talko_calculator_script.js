@@ -15,7 +15,7 @@ recognition.maxAlternatives = 1;
 
 var diagnostic = document.querySelector('.output');
 
-document.body.img.onclick = function() {
+taco.onclick = function() {
     console.log("HI");
   recognition.start();
 }
