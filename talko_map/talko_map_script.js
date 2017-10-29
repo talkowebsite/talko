@@ -21,7 +21,6 @@ taco.onclick = function() {
 }
 
 function initMap() {
-  var geocoder = new google.maps.Geocoder();
   var austin = {lat: 30.2672, lng: -97.7431};
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 11,
@@ -57,6 +56,8 @@ recognition.onresult = function(event) {
   var last = event.results.length - 1;
   var address = event.results[last][0].transcript;
   console.log('What you said: ' + address);
+
+  var geocoder = new google.maps.Geocoder();
 
   geocodeAddress(geocoder, map, address);
 }
