@@ -29,13 +29,15 @@ AFRAME.registerComponent('get-place', {
 
 });
 
+var keyword;
+
 recognition.onresult = function(event) {
   console.log('got a word!');
   var last = event.results.length - 1;
   var word = event.results[last][0].transcript;
   console.log(word);
   
-  var keyword = word + ",360degrees";
+  keyword = word + ",360degrees";
   //var keyword = "antarctica,360degrees";
   console.log(keyword);
 
