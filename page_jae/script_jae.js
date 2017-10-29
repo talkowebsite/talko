@@ -46,7 +46,6 @@ recognition.onresult = function(event) {
 
   for(var i = 0; i < inputArray.length; i++) {
     var current = inputArray[i];
-    console.log('current: ' + current);
 
     if(isNumeric(current)) {
       queue.push(current);
@@ -56,8 +55,6 @@ recognition.onresult = function(event) {
       } else {
         currentPriority = 1;
       }
-      console.log('stack: ' + stack);
-      console.log('queue: ' + queue);
 
       if(stack.length > 0) {
         var topStack = stack[stack.length-1];
@@ -78,6 +75,38 @@ recognition.onresult = function(event) {
   }
 
   console.log('final: ' + queue);
+
+  var resultStack = [];
+
+  for(var j = 0; j < queue.length; j++) {
+    var token = queue[j];
+
+    switch(token) {
+      case '+':
+      case 'plus':
+        resultStack.push(resultStack.pop() + resultStack.pop());
+        break;
+      case '-':
+      case 'minus':
+        resultStack.push(resultStack.pop() - resultStack.pop());
+        break;
+      case 'x':
+      case '*':
+      case 'times':
+        resultStack.push(resultStack.pop() * resultStack.pop());
+        break;
+      case '/':
+      case 'over':
+        var divisor = resultStack.pop();
+        resultStack.push(resultStack.pop() / divisor);
+        break;
+      default:
+        resultStack.push(token);
+        break;
+    }
+  }
+
+  console.log('ANSWER: ' + resultStack);
 
   // var newStack = [];
 
