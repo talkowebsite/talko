@@ -31,42 +31,101 @@ recognition.onresult = function(event) {
 
   var last = event.results.length - 1;
   var line = event.results[last][0].transcript;
+  var inputArray = line.split(" ");
 
-  console.log(last);
-  diagnostic.textContent = 'Answer: ' + line + '.';
+  // Infix to postfix
+  var priority = 0;
+  var postfixBuffer = "";
+  var stack = [];
+  var postfixArray = [];
 
-  if(line.indexOf("+") == -1 && line.indexOf("-") == -1 && line.indexOf("*") == -1 && line.indexOf("/") == -1) {
-    diagnostic.textContent = 'No operators';
+  for(int i = 0; i < inputArray.length; i++) {
+    var something = inputArray[i];
+    if(something == '+' || something == 'plus' || something == '-' || something == 'minus' || something == 'x' || something == '*' || something == 'times' || something == '/' || something == 'over' || something == 'divided') {
+      if(postfixBuffer.length > 0) {
+        postfixArray.push(postfixBuffer);
+      }
+      postfixBuffer = "";
+
+      if(stack.length <= 0) {
+        priority = 1;
+      } else {
+        priority = 0;
+      }
+
+      if(priority == 1) {
+        postfixArray.push(valueOf(stack.pop()));
+        i--;
+      } else {
+        if(something == '+' || something == 'plus' || something == '-' || something == 'minus') {
+          postfixArray.push(valueOf(stack.pop()));
+          stack.push(something);
+        } else {
+          stack.push(something);
+        }
+      }
+    } else {
+      postfixBuffer += something;
+    }
+  }
+  postfixArray.push(postfixBuffer);
+  var len = stack.length;
+  for(int j = 0; j < len; j++) {
+    postfixArray.push(valueOf(stack.pop()));
   }
 
-  var array = line.split(" ");
+  console.log(postfixArray);
 
-  var i = 0;
+  // var newStack = [];
 
-  //while(array) {
-    var first = array[i];
-    var op = array[i+1];
-    var second = array[i+2];
-  //  i++;
-  //}
+  // for(int i = 0; i < postfixArray.length; i++) {
+  //   var next = postfixArray[i];
+  //   if(next == )
+  // }
 
-  if(op == '+' || op == 'plus') {
-      console.log('plus');
-      diagnostic.textContent = 'Answer: ' + (parseInt(first, 10) + parseInt(second, 10));
-  } else if(op == '-' || op == 'minus') {
-        console.log('minus');
-      diagnostic.textContent = 'Answer: ' + (parseInt(first, 10) - parseInt(second, 10));
-  } else if(op == 'x' || op == '*' || op == 'times') {
-        console.log('times');
-      diagnostic.textContent = 'Answer: ' + (parseInt(first, 10) * parseInt(second, 10));
-  } else if(op == '/' || op == 'over') {
-        console.log('divide');
-      diagnostic.textContent = 'Answer: ' + (parseInt(first, 10) / parseInt(second, 10));
-  }
+  // console.log(last);
+  // diagnostic.textContent = 'Answer: ' + line + '.';
 
-  console.log(line.indexOf("+"));
-  console.log(line);
-  console.log('Confidence: ' + event.results[0][0].confidence);
+  // if(line.indexOf("+") == -1 && line.indexOf("-") == -1 && line.indexOf("*") == -1 && line.indexOf("x") == -1 && line.indexOf("/") == -1) {
+  //   diagnostic.textContent = 'No operators';
+  // }
+
+  // var arraySize = array.length;
+
+  // var index1 = array.indexOf("x");
+  // var index2 = array.indexOf("/");
+  // if(index1 > index2) {
+  //   var mdIndex = index2;
+  // } else {
+  //   var mdIndex = index1;
+  // }
+
+  // var firstNum = array[mdIndex-1];
+  // stack.push(firstNum);
+
+  // while(mdIndex < arraySize - 2) {
+  //   var first = stack.pop();
+  //   var op = array[mdIndex];
+  //   var second = array[mdIndex+1];
+
+  //   if(op == '+' || op == 'plus') {
+  //     stack.push(parseInt(first, 10) + parseInt(second, 10));
+  //   } else if(op == '-' || op == 'minus') {
+  //     stack.push(parseInt(first, 10) - parseInt(second, 10));
+  //   } else if(op == 'x' || op == '*' || op == 'times') {
+  //     stack.push(parseInt(first, 10) * parseInt(second, 10));
+  //   } else if(op == '/' || op == 'over') {
+  //     stack.push(parseInt(first, 10) / parseInt(second, 10));
+  //   }
+  //   mdIndex = mdIndex + 2;
+  // }
+
+  // var index = 0;
+  // var firstAS = array[index];
+  // var opAS = array[index+1];
+  // var secondAS = array[index+2];
+
+
 }
 
 recognition.onspeechend = function() {
